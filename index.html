@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Banking App</title>
+</head>
+<body>
+    <header>
+        <h3 class="logo">BANKING WITHIN A CLICK</h2>
+        <h2 class="signature"> My online banking</h2>
+    </header>
+<div class="page">
+    <!-- <img src="./image/top_bg.jpg" alt="banking"> -->
+    <div class="deposit-container">
+                <h1>Make a deposit</h1> 
+                <input type="text" id="input">
+                <button class = "btn-deposit" type = "submit">OK</button>
+    </div>
+
+    <div class = "accounts">
+        <div class = "account checking">
+            <h2> CHECKING ACCOUNT</h2>
+            <div class = "account-value chk">500</div>
+        </div>
+        <div class = "account credit">
+            <h2> CREDIT ACCOUNT</h2>
+            <div class = "account-value crd">500</div>
+        </div>
+    </div>
+
+    <div class = "transfer">
+        <h2>TRANSFER</h2>
+        <form  class = "transfer-form">
+            <div class = "transfer-block from">
+                <label for="from">
+                    <h3>FROM</h3>
+                </label>
+                <select name="account" id="from">
+                    <option value="checking">Checking</option>
+                    <option value="credit">Credit</option>
+                </select>
+            </div>
+            
+            <div class = "transfer-block to">
+                <label for="to">
+                    <h3>TO</h3>
+                </label>
+                <select name="account" id="to">
+                    <option value="checking">Checking</option>
+                    <option value="credit">Credit</option>
+                </select>
+            </div>
+           
+            <div class = "amount-block">
+                <label for="amount">
+                    <h3>AMOUNT</h3>
+                </label>
+                <input class = "amount-value" type="text" name="text">
+                <button type = "submit">OK</button>   
+            </div>
+        </form>
+    </div>
+</div>
+    
+<div class="transactions">
+        <div class="transactions-header">
+            <h2>LIST OF TRANSACTIONS</h2>
+        </div>
+        <div class="transactions-container">
+            <ul>
+                <li>1.Transfered $300 from checking to credit </li>
+
+            </ul>
+        </div>
+</div>
+
+
+</body>
+</html>
