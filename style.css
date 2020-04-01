@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+@font-face {
+    font-family: PopLight;
+    src: url("./fonts/Poppins-Light.ttf");
+}
+@font-face {
+    font-family: PopMedium;
+    src: url("./fonts/Poppins-Medium.ttf");
+}
+@font-face {
+    font-family: PopSemiBold;
+    src: url("./fonts/Poppins-SemiBold.ttf");
+}
+body {
+    font-family: PopLight;
+    background: url("./image/top_bg.jpg") no-repeat fixed;
+    background-size: cover;
+    /* opacity: 0.62; */
+    /* background-color: rgba(255, 0, 0, 0.3); */
+}
+header {
+    position: fixed;
+    width: 100%;
+    min-height: 5vh;
+    /* margin: auto; */
+    display: flex;
+    justify-content: space-between;
+    background-color: #8F8585;
+    align-items: center;
+}
+header h2,h3 {
+    margin: 0 30px 0 30px;
+}
+header h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+.page {
+    height: 73%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 5% 1fr 1fr 1fr 5%;
+    /* z-index: 2; */
+    grid-template-rows: 10% 1fr 1fr 10%;
+}
+.accounts {
+    grid-column: 2/3;
+    grid-row: 3/4;
+    /* border: 2px solid #4D5153; */
+    width: 100%;
+    top:50%;
+    transform: translateY(-50%);
+    margin: auto;
+}
+.account {
+    background-color: #D7E9E7;
+    border: 2px solid #4D5153;
+    padding: 4px;
+    width: 100%;
+    /* height: 60px; */
+}
+.checking {
+    margin-bottom: 25px;
+}
+.credit {
+    margin-top: 25px;
+}
+.account-value {
+    background-color: seashell;
+    padding-left: 2px;
+}
+.account h2 {
+    font-family: PopMedium;
+    font-size: 17px;
+    }
+.accounts h3 {
+    font-family: PopLight;
+    font-size: 12px;
+    }
+
+
+.deposit-container {
+    grid-column: 3/4;
+    grid-row: 2/3;
+    width:70%;
+    margin: auto;
+    
+    }
+.deposit-container h1 {
+    font-family: PopMedium;
+    font-size: 20px;
+    border: 2px solid #4D5153;
+    background-color: rgb(141, 146, 146);
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#input {
+    width: 80%;
+    float: left;
+    border: 2px solid #4D5153;
+    padding: 6px 8px;
+}
+.btn-deposit {
+    /* margin-right: 0; */
+    width: 20%;
+    background-color:rgba(64, 65, 61, 0.678);
+    border: 2px solid #4D5153;
+    color: white;
+    cursor: pointer;
+    margin-right: 0px;
+    padding: 6px 8px;
+    float: right;
+    }
+
+.transfer {
+    grid-column: 4/5;
+    grid-row: 3/4;
+    background-color: #D7E9E7;
+    border: 1px solid #4D5153;
+    top:50%;
+    transform: translateY(-25%);
+}
+
+.transfer-form {
+    padding: 3px;
+}
+.transfer-block {
+    padding: 2px 3px;
+}
+.transfer-block label {
+    float: left;
+    width: 50%;
+    }
+label h3 {
+    margin-left: 2px;
+    border: 1px solid #4D5153;
+    }
+.transfer-block select {
+    margin: auto;
+}
+.amount-block  label{
+    float: left;
+    /* padding: 2px, 3px; */
+}
+.amount-value {
+    width: 35%;
+}
+.transfer h2 {
+    font-family: PopMedium;
+    font-size: 17px;
+    text-align: center;
+    }
+.transfer h3 {
+    font-family: PopLight;
+    font-size: 12px;
+    
+    }
+
+    
+
+
+
+
+
+
+
+
+.transactions {
+    height: 27%;
+    width: 100%;
+    background-color: #D6C9C9;
+    /* position: fixed; */
+    /* grid-template-rows: 1fr 1fr; */
+
+}
+
+
+.transactions-header {
+
+}
