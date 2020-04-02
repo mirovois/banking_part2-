@@ -27,88 +27,79 @@ body {
     /* background-color: rgba(255, 0, 0, 0.3); */
 }
 header {
-    position: fixed;
     width: 100%;
-    min-height: 5vh;
-    /* margin: auto; */
-    display: flex;
-    justify-content: space-between;
+    height: 8%;
     background-color: #8F8585;
-    align-items: center;
-}
-header h2,h3 {
-    margin: 0 30px 0 30px;
-}
+    padding: 0.2rem;
+}    
 header h3 {
-    font-size: 18px;
-    font-weight: 600;
+    font-family: PopMedium;
+    /* font-size: calc(1.5rem + vh); */
+    /* padding-left: 0.8rem; */
+    border: 2px solid #4D5153;
+    float: left;
+    align-self: center;
+    
+    
+}
+header h2 {
+    font-weight: PopMedium;
+    /* font-size: calc(1.3rem +vh); */
+    padding-right:0.2rem ;
+    float: right;
+    top: 50%;
 }
 .page {
-    height: 73%;
+    height: 77%;
     width: 100%;
     display: grid;
     grid-template-columns: 5% 1fr 1fr 1fr 5%;
-    /* z-index: 2; */
-    grid-template-rows: 10% 1fr 1fr 10%;
+    
 }
 .accounts {
     grid-column: 2/3;
-    grid-row: 3/4;
-    /* border: 2px solid #4D5153; */
+    height: 80%;
     width: 100%;
-    top:50%;
-    transform: translateY(-50%);
     margin: auto;
 }
 .account {
     background-color: #D7E9E7;
     border: 2px solid #4D5153;
-    padding: 4px;
+    padding: 0.4rem;
     width: 100%;
-    /* height: 60px; */
+}
+.account h3{
+    font-family: PopMedium;;
+    font-size: 1.1rem;
 }
 .checking {
-    margin-bottom: 25px;
-}
-.credit {
-    margin-top: 25px;
+    margin-bottom: 1.5rem;
 }
 .account-value {
     background-color: seashell;
-    padding-left: 2px;
+    padding-left: 0.2rem;
 }
-.account h2 {
-    font-family: PopMedium;
-    font-size: 17px;
-    }
-.accounts h3 {
-    font-family: PopLight;
-    font-size: 12px;
-    }
-
 
 .deposit-container {
     grid-column: 3/4;
-    grid-row: 2/3;
     width:70%;
-    margin: auto;
-    
-    }
+    margin: auto;    
+}
 .deposit-container h1 {
-    font-family: PopMedium;
-    font-size: 20px;
+    font-family: PopSemiBold;
+    font-size: 2rem;
+    text-transform: uppercase;
     border: 2px solid #4D5153;
     background-color: rgb(141, 146, 146);
-    width: 100%;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
 
 #input {
-    width: 80%;
+    width: 60%;
     float: left;
     border: 2px solid #4D5153;
-    padding: 6px 8px;
+    padding: 0.4rem 0.6rem;
 }
 .btn-deposit {
     /* margin-right: 0; */
@@ -124,38 +115,65 @@ header h3 {
 
 .transfer {
     grid-column: 4/5;
-    grid-row: 3/4;
     background-color: #D7E9E7;
-    border: 1px solid #4D5153;
-    top:50%;
-    transform: translateY(-25%);
+    border: 2px solid rgb(68, 90, 100);
+    height: 80%;
+    padding: 0.1rem;
 }
 
-.transfer-form {
-    padding: 3px;
-}
-.transfer-block {
-    padding: 2px 3px;
-}
-.transfer-block label {
-    float: left;
-    width: 50%;
-    }
-label h3 {
-    margin-left: 2px;
-    border: 1px solid #4D5153;
-    }
-.transfer-block select {
-    margin: auto;
-}
-.amount-block  label{
-    float: left;
-    /* padding: 2px, 3px; */
-}
-.amount-value {
-    width: 35%;
-}
 .transfer h2 {
+    font-family: PopSemiBold;
+    font-size: 1.6rem;
+    text-align: center;   
+}
+form {
+margin: 0.2rem;
+}
+
+.transfer-block,
+.amount-block,
+.btn-transfer {
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    border: 2px solid rgb(58, 75, 65);
+    width: 100%;
+}
+.transfer-block label, 
+.amount-block label {
+    width: 50%;
+}
+label h3 {
+    text-align: center;
+    font-family: PopMedium;
+    font-size: 1.1rem;
+}
+select {
+    width:50%;
+    margin-right: 0.2rem;
+}
+.transfer-value {
+    width: 50%;
+    margin-right: 0.2rem;
+}
+.btn-transfer{
+    width: 80%;
+    padding: 0.1rem 0.4rem;
+    border: none;
+    background: rgb(65, 90, 90);
+    color: seashell;
+    cursor: pointer;
+    font-family: PopSemiBold;
+    font-size: 1rem;
+    
+    
+}
+
+
+
+
+
+/* .transfer h2 {
     font-family: PopMedium;
     font-size: 17px;
     text-align: center;
@@ -164,19 +182,11 @@ label h3 {
     font-family: PopLight;
     font-size: 12px;
     
-    }
-
-    
-
-
-
-
-
-
+    } */
 
 
 .transactions {
-    height: 27%;
+    height: 15%;
     width: 100%;
     background-color: #D6C9C9;
     /* position: fixed; */
@@ -185,6 +195,6 @@ label h3 {
 }
 
 
-.transactions-header {
+/* .transactions-header {
 
-}
+} */
