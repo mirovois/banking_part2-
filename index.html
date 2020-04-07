@@ -13,9 +13,9 @@
     </header>
 <div class="page">
     <div class="deposit-container">
-                <h1>deposit</h1> 
-                <input type="text" id="input">
-                <button class = "btn-deposit" type = "submit">OK</button>
+                <h1>deposit</h1>
+                <input class = "deposit-value" type="text" id="input">
+                <button class = "btn-deposit">OK</button>
     </div>
 
     <div class = "accounts">
@@ -31,38 +31,38 @@
 
     <div class = "transfer">
         <h2>TRANSFER</h2>
-        <form  class = "transfer-form">
+        <div  class = "form transfer-form">
             <div class = "transfer-block from">
                 <label for="from">
                     <h3>FROM</h3>
                 </label>
-                <select name="account" id="from">
-                    <option value="checking">Checking</option>
+                <select name="from-account" id="from">
+                    <option value="checking" selected>Checking</option>
                     <option value="credit">Credit</option>
                 </select>
             </div>
-            
+
             <div class = "transfer-block to">
                 <label for="to">
                     <h3>TO</h3>
                 </label>
-                <select name="account" id="to">
+                <select name="to-account" id="to">
                     <option value="checking">Checking</option>
-                    <option value="credit">Credit</option>
+                    <option value="credit" selected>Credit</option>
                 </select>
             </div>
-           
+
             <div class = "amount-block">
                 <label for="amount">
                     <h3>AMOUNT</h3>
                 </label>
-                <input class = "transfer-value" type="text" name="text">
+                <input class = "transfer-value" type="text" name="transfer">
             </div>
-            <button type = "submit" class = "btn-transfer">OK</button>   
-        </form>
+            <button class = "btn-transfer">OK</button>
+        </div>
     </div>
 </div>
-    
+
 <div class="transactions">
         <div class="transactions-header">
             <h3>LIST OF TRANSACTIONS</h3>
