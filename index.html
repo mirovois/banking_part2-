@@ -37,8 +37,8 @@
                     <h3>FROM</h3>
                 </label>
                 <select name="from-account" id="from">
-                    <option value="checking" selected>Checking</option>
-                    <option value="credit">Credit</option>
+                    <option value="chk" selected>Checking</option>
+                    <option value="crd">Credit</option>
                 </select>
             </div>
 
@@ -47,8 +47,8 @@
                     <h3>TO</h3>
                 </label>
                 <select name="to-account" id="to">
-                    <option value="checking">Checking</option>
-                    <option value="credit" selected>Credit</option>
+                    <option value="chk">Checking</option>
+                    <option value="crd" selected>Credit</option>
                 </select>
             </div>
 
@@ -65,13 +65,40 @@
 
 <div class="transactions">
         <div class="transactions-header">
-            <h3>LIST OF TRANSACTIONS</h3>
+            <h2>LIST OF TRANSACTIONS</h2>
         </div>
         <div class="transactions-container">
-            <ul>
-                <li>1.Transfered $300 from checking to credit </li>
+          <div class="debit">
+            <h3 class = "debit-title">Debit</h3>
+            
+            <div class = "debit-list">
 
-            </ul>
+               <div class = "transfer-fix" id = "debit-0"> 
+                   <div class = "transaction-description">
+                       <h4>from checking account to credit account</h4>
+                   </div>
+                   <div class="transaction-value">200</div>
+               </div>
+            </div>
+            
+          </div>
+
+          <div class="credit">
+            <h3 class = "credit-title">Credit</h3>
+            
+            <div class = "credit-list">
+               <div class = "transfer-fix" id = "debit-0"> 
+                   <div class = "transaction-description">
+                       <h4>from credit account to checking account</h4>
+                   </div>
+                   <div class="transaction-value">100</div>
+               </div>
+            </div>
+            
+          </div>
+
+           
+            
         </div>
 </div>
 
