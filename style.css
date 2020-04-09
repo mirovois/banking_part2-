@@ -212,17 +212,53 @@ select {
     font-size: 1.2rem;
 }
 .transactions-container{
-    margin: 0.2rem auto;
+    margin: 0.2rem;
+    width: 100%;
     display:flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
-.debit,.credit{
-    margin:0.2rem,auto;
+.debit-container,.credit-container{
+    margin:0.2rem,2rem;
+    /* border: 1px solid rgb(58, 75, 65); */
+    width: 47%;
 }
 .debit-title,
 .credit-title {
     text-align: center;
     text-transform: uppercase; 
+    /* width: 100%; */
+    background-color: rgb(106, 101, 121);
+    /* margin: 0.2rem; */
+}
+/* .debit-list, .credit-list{
+    width: 100%;
+} */
+.transaction-fix{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(58, 75, 65);
+    /* width: 80%; */
+    /* height: 30%; */
+    padding: 0.1rem 0.2rem;
+}
+.transaction-description{
+    /* width: 90%; */
+    float: left;
+    /* text-align: center; */
+    /* min-height: 90%; */
+}
+.transaction-description h4{
+    font-weight: PopLight;
+    font-size: calc(0.7vw + 0.7vh + 0.6vmin);
+    text-align: center;
+}
+.transaction-value{
+    float: right;
+    /* width: 10%; */
+    text-align: left;
+    padding-left: 1rem;
+    font-size: calc(0.7vw + 0.7vh + 0.6vmin);
+
 }
 
 

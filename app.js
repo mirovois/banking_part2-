@@ -1,3 +1,5 @@
+
+// TRANSACTION module
 var transactionController = (function(){
 
     var Debit = function(id,value) {
@@ -20,11 +22,25 @@ var transactionController = (function(){
     };
     return {
       addDeposit:function(deposit){
-      return {
-        deposits:{
-          checkingDeposit:data.allTransfers.chk.push(new Credit(0,deposit)),
-          creditDeposit: data.allTransfers.crd.push(new Debit(0,200))
-        } }
+        // var newDepot;
+        // if (acc==="chk") {
+        //   newDepot = new Debit(0,val)
+        // } else if (acc ==="crd") {
+        //   newDepot = new Credit(0,200)
+        // };
+        // data.allTransfers[acc].push(newDepot);
+        // return newDepot;
+      
+
+        return{
+          deposits:{
+            checkingDeposit:data.allTransfers.chk.push(new Credit(0,deposit)),
+            creditDeposit: data.allTransfers.crd.push(new Debit(0,200))
+          } 
+        }
+        
+        
+      
       },
 
       addTransfer:function(acc,val){
@@ -50,19 +66,27 @@ var transactionController = (function(){
   };
 })();
 
+// UI module
 var UIController = (function(){
     var DOMdata = {
         depositValue:".deposit-value",
+        checkingValue:".chk",
+        creditValue:".crd",
         transferValue:".transfer-value",
         fromAccount:"#from",
         toAccount:"#to",
         depositBtn:".btn-deposit",
-        transferBtn:".btn-transfer"
+        transferBtn:".btn-transfer",
+        debitList:".debit-list",
+        creditList:".credit-list"
     };
     return {
         getInput:function() {
             return parseInt(document.querySelector(DOMdata.depositValue).value);
         },
+        // addDepositValue:function(obj){         
+        // },
+
         getTransfer:function() {
             return {
               accountSend: document.querySelector(DOMdata.fromAccount).value,
@@ -70,6 +94,22 @@ var UIController = (function(){
               amountTransfered: parseInt(document.querySelector(DOMdata.transferValue).value)
             };
                },
+        addTransferItem:function(obj,acc){
+          var html, newHTML, element;
+          // Create HTML string with placeholder text
+          if (acc ==="chk"){
+            element = DOMdata.debitList;
+            html = '<div class = "transaction-fix" id = "debit-%id%"><div class = "transaction-description"><h4>from checking account to credit account</h4></div><div class="transaction-value">%value%</div></div>';
+          } else if (acc = "crd") {
+            element = DOMdata.creditList;
+            html = '<div class = "transaction-fix" id = "credit-%id%"><div class = "transaction-description"><h4>from credit account to checking account</h4></div><div class="transaction-value">%value%</div></div>';
+          }
+          // REplace the placeholder text with actual data
+          newHTML = html.replace('%id%', obj.id);
+          newHTML = newHTML.replace('%value%', obj.value);
+          // add DOM element on the page
+          document.querySelector(element).insertAdjacentHTML('beforeend',newHTML);
+        },
         getDOMdata: function() {
             return DOMdata;
     }
@@ -77,6 +117,7 @@ var UIController = (function(){
     })();
 
 
+//CONTROLLER Module 
 
 var controller = (function(transControl,UIControl){
   
@@ -89,16 +130,22 @@ var controller = (function(transControl,UIControl){
       makeTransfer();
       }
     });
-    
-  };
+    };
   //  Get deposit data and add it to the transaction controller
   var makeDeposit = function(){
     console.log("Deposit is:");
     var input;
+    // 1. Ger deposit value
     input = UIControl.getInput();
     console.log(input);
+    // 2. Add the input to the transaction controller
     startValue = transControl.addDeposit(input);
+    // console.log(startValue);
+    // 3.Add the deposit to UI
+    
+    // UIControl.addDepositValue(startValue);
   };
+  
   var ctrlAddtransfer = function(){
     console.log("Ready to transfer");
     
@@ -110,20 +157,11 @@ var controller = (function(transControl,UIControl){
  
     // 2. Add the transfer item to the transaction controller
     newTransf = transControl.addTransfer(inputTransfer.accountReceive,inputTransfer.amountTransfered);
-  };
-
-    // 3. Add input to UI
-    // - create html
-
-    // -replace placeholders with actual data
-
-    // -add DOM element on the page
-
     
+    // 3. Add input to UI 
+    UIControl.addTransferItem(newTransf,inputTransfer.accountReceive);
+  };  
     // 4.Get data which will be transfered
-
-
-
      // 2.Add deposit to the budget controller
 
      //  3. Fetch the data to UI
