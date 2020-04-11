@@ -20,35 +20,43 @@ var transactionController = (function(){
         crd:0
       }
     };
+    
+    
+
+    var calculateAccountDep = function(acc){
+      sum = 0;
+      data.allTransfers[acc].forEach(function(el){
+        sum =+ el.value;
+      });
+      data.totals[acc] = sum;
+    };
+
+    // var calculateAccountValue = function(accSend,accReceive){
+    //   var sum = 0;
+    //     data.allTransfers[accReceive].forEach(function(el){
+    //     sum =+ el.value;
+    //     });
+    //     data.totals[accReceive] = data.totals[accReceive]+sum;
+    //     data.totals[accSend] = data.totals[accSend]-sum;
+      
+    // };
+
     return {
       addDeposit:function(deposit){
-        // var newDepot;
-        // if (acc==="chk") {
-        //   newDepot = new Debit(0,val)
-        // } else if (acc ==="crd") {
-        //   newDepot = new Credit(0,200)
-        // };
-        // data.allTransfers[acc].push(newDepot);
-        // return newDepot;
-      
-
         return{
           deposits:{
             checkingDeposit:data.allTransfers.chk.push(new Credit(0,deposit)),
-            creditDeposit: data.allTransfers.crd.push(new Debit(0,200))
+            creditDeposit: data.allTransfers.crd.push(new Debit(0,deposit*0.5))
           } 
         }
-        
-        
-      
       },
 
       addTransfer:function(acc,val){
         var newTransfer,ID;
-        if(data.allTransfers[acc].length>1) {
+        if(data.allTransfers[acc].length>0) {
           ID = data.allTransfers[acc][data.allTransfers[acc].length-1].id+1;
         } else {
-          ID = 1;
+          ID = 0;
         }
         
         if (acc==="chk") {
@@ -58,6 +66,31 @@ var transactionController = (function(){
         };
         data.allTransfers[acc].push(newTransfer);
         return newTransfer;
+      },
+
+      calculateDeposit:function(){
+        calculateAccountDep("chk");
+          calculateAccountDep("crd");
+      },
+
+      calculateAccounts:function(accSend,accReceive,val){
+          // calculateAccountValue("crd","chk");
+          // var sum = 0;
+          // data.allTransfers[accReceive].forEach(function(el){
+          // sum =+ el.value;
+          // });
+          if ((accSend !== accReceive) && (accSend>=val)) {
+            data.totals[accReceive] = data.totals[accReceive]+val;
+            data.totals[accSend] = data.totals[accSend]-val;
+          }
+          
+      },
+
+      getAccountValues:function(){
+        return {
+          totalChecking:data.totals.chk,
+          totalCredit:data.totals.crd
+        }
       },
 
       testing: function(){
@@ -86,6 +119,10 @@ var UIController = (function(){
         },
         // addDepositValue:function(obj){         
         // },
+        displayAccountStatus:function(obj){
+            document.querySelector(DOMdata.checkingValue).textContent = obj.totalChecking;
+            document.querySelector(DOMdata.creditValue).textContent = obj.totalCredit;
+        },
 
         getTransfer:function() {
             return {
@@ -110,6 +147,22 @@ var UIController = (function(){
           // add DOM element on the page
           document.querySelector(element).insertAdjacentHTML('beforeend',newHTML);
         },
+
+        clearInput:function(){
+          // var fields,arrFields;
+          var field = document.querySelector(DOMdata.depositValue);
+          field.value = "";
+
+          // arrFields = Array.prototype.slice.call(fields);
+          // arrFields.forEach(function(el,index,array){
+          //   el.value = "";
+          // });
+        },
+        clearTransfer:function(){
+          var tr = document.querySelector(DOMdata.transferValue);
+          tr.value = ""; 
+        },
+
         getDOMdata: function() {
             return DOMdata;
     }
@@ -138,13 +191,30 @@ var controller = (function(transControl,UIControl){
     // 1. Ger deposit value
     input = UIControl.getInput();
     console.log(input);
-    // 2. Add the input to the transaction controller
+    // == Verify deposit 
+    if (!isNaN(input)) {
+      // 2. Add the input to the transaction controller
     startValue = transControl.addDeposit(input);
-    // console.log(startValue);
-    // 3.Add the deposit to UI
+    transactionController.calculateDeposit();
+    var depositAccount = transactionController.getAccountValues()
+    console.log(depositAccount);
+    UIControl.displayAccountStatus(depositAccount);
+    UIControl.clearInput();
+    }
+
+    
+   
     
     // UIControl.addDepositValue(startValue);
   };
+  // Update accounts
+  var updateAccounts = function(){
+      //1. Calculate acount value 
+    transactionController.calculateAccounts(inputTransfer.accountSend,inputTransfer.accountReceive);
+      var account = transactionController.getAccountValues();
+      console.log(account);
+    }
+
   
   var ctrlAddtransfer = function(){
     console.log("Ready to transfer");
@@ -154,13 +224,30 @@ var controller = (function(transControl,UIControl){
     // 1.Get transfer data
     var inputTransfer = UIControl.getTransfer();
     console.log(inputTransfer);
- 
-    // 2. Add the transfer item to the transaction controller
+
+  //  ===VERIFY INPUT=== 
+    if (!isNaN(inputTransfer.amountTransfered) && inputTransfer.amountTransfered !== "") {
+      // 2. Add the transfer item to the transaction controller
     newTransf = transControl.addTransfer(inputTransfer.accountReceive,inputTransfer.amountTransfered);
     
     // 3. Add input to UI 
     UIControl.addTransferItem(newTransf,inputTransfer.accountReceive);
+    UIControl.clearTransfer();
+   
+    // Calculate and update accounts
+    // updateAccounts();
+    transactionController.calculateAccounts(inputTransfer.accountSend,inputTransfer.accountReceive,inputTransfer.amountTransfered);
+      var account = transactionController.getAccountValues();
+      console.log(account);
+    UIControl.displayAccountStatus(account);
+    }
+    
+    
   };  
+     // 4. Clear input fields
+     
+
+     // 3.Add the deposit to UI
     // 4.Get data which will be transfered
      // 2.Add deposit to the budget controller
 
